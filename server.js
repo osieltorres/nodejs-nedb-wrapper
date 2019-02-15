@@ -54,5 +54,15 @@ app.put('/api/:id', (req, res) => {
   });
 });
 
+// DELETE (single)
+app.delete('/api/:id', (req, res) => {
+  db.remove({_id: req.params.id}, {}, (err, resp) => {
+    if (err) {
+      console.log(err);
+    } else
+      res.json(resp);
+  });
+});
+
 // set app port for connections to listen
 app.listen(4500, () => console.log('Listening on port 4500'));
