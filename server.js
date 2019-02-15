@@ -14,5 +14,15 @@ app.use(parser.urlencoded({
   extended: true
 }));
 
+// GET
+app.get("/api", (req, res) => {
+  db.find({}, (err, resp) => {
+    if (err) {
+      console.log(err);
+    } else
+      res.json(resp);
+  });
+});
+
 // set app port for connections to listen
 app.listen(4500, () => console.log('Listening on port 4500'));
