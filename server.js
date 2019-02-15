@@ -44,5 +44,15 @@ app.get('/api/:id', (req, res) => {
   });
 });
 
+// PUT (single)
+app.put('/api/:id', (req, res) => {
+  db.update({_id: req.params.id}, {$set: req.body}, (err, numReplaced) => {
+    if (err) {
+      console.log(err);
+    } else
+      res.json(numReplaced);
+  });
+});
+
 // set app port for connections to listen
 app.listen(4500, () => console.log('Listening on port 4500'));
