@@ -34,5 +34,15 @@ app.post('/api', (req, res) => {
   });
 });
 
+// GET (view / edit)
+app.get('/api/:id', (req, res) => {
+  db.findOne({_id: req.params.id}, {}, (resp, err) => {
+    if (err) {
+      console.log(err);
+    } else
+      res.json(resp);
+  });
+});
+
 // set app port for connections to listen
 app.listen(4500, () => console.log('Listening on port 4500'));
